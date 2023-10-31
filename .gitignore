@@ -2,5 +2,6 @@
 *.*
 # except SAS files and markdown files
 !*.md
+!*.sas
 # Ignore my unit testing run.sas
 run.sas
