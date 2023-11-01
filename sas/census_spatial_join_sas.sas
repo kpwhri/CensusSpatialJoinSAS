@@ -49,6 +49,7 @@ SITE EDITS
 * libname lib  ;
 * %let input_data = ;
 
+
 *--------------------------------------------;
 * END EDIT SECTION *NO MORE EDITS*        ---;
 *--------------------------------------------;
@@ -63,9 +64,9 @@ libname share "&root./share";
 
 
 * run the pipeline;
-%sj_pipeline(&test_in., &test_out._2000,year=2000, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
-%sj_pipeline(&test_in., &test_out._2010,year=2010, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
-%sj_pipeline(&test_in., &test_out._2020,year=2020, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
+%sj_pipeline(&input_data., local.geocoded_2000,year=2000, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
+%sj_pipeline(&input_data., local.geocoded_2010,year=2010, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
+%sj_pipeline(&input_data., local.geocoded_2020,year=2020, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
 
 
 

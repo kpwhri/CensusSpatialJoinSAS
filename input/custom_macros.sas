@@ -217,9 +217,12 @@
         %** Fetch the &next_state;
         %fetch_shapefile(&year, &next_state, &geolevel., &temp_dir.);
         %* Perform a spatial join;
-        %spatial_join(&inds., _tmp,&temp_dir./&_tmp_shp., &year, geolevel=&geolevel);
+        %spatial_join(&inds., _sj_tmp,&temp_dir./&_tmp_shp., &year, geolevel=&geolevel);
         %put INFO: base_setup = &base_setup..;
-        %base_append(&outds., basetable=_tmp, new_basetable=&base_setup.);
+        %base_append(_sj_tmp, basetable=_sj_tmp, new_basetable=&base_setup.);
         %let base_setup = false;
+        data &outds.;
+            set _sj_tmp;
+        run;
     %end;   
 %mend;
