@@ -197,7 +197,7 @@
     %if &new_basetable. = true %then %do;
     %put INFO: creating a new base table: &basetable..;
     proc sql;
-    create table &basetable. like &inds.;
+        create table &basetable. like &inds.;
     quit;
     %end;
     %else %do;
@@ -217,9 +217,9 @@
         %** Fetch the &next_state;
         %fetch_shapefile(&year, &next_state, &geolevel., &temp_dir.);
         %* Perform a spatial join;
-        %spatial_join(&inds., &outds.,&temp_dir./&_tmp_shp., &year, geolevel=&geolevel);
+        %spatial_join(&inds., _tmp,&temp_dir./&_tmp_shp., &year, geolevel=&geolevel);
         %put INFO: base_setup = &base_setup..;
-        %base_append(&outds., basetable=&outds., new_basetable=&base_setup.);
+        %base_append(&outds., basetable=_tmp, new_basetable=&base_setup.);
         %let base_setup = false;
     %end;   
 %mend;

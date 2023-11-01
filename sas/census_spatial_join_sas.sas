@@ -56,6 +56,11 @@ SITE EDITS
 %include "&root./input/custom_macros.sas";
 
 %let temp_dir = &root./local_only/temp;
+* store the shapefiles in a temp folder;
+libname local "&root./local_only";
+libname share "&root./share";
+
+
 
 * run the pipeline;
 %sj_pipeline(&test_in., &test_out._2000,year=2000, geolevel=bg, temp_dir=&temp_dir., base_setup=true);
